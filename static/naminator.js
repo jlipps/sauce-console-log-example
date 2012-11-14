@@ -14,7 +14,7 @@ var doTheNaminating = function() {
             $('#naminated').html('');
             $.each(res, function(name) {
                 var div = $('<div>' + name + '</div>');
-                $('#naminated').appendChild(div);
+                $('#naminated').append(div);
             })
         }
     });
