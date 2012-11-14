@@ -22,9 +22,9 @@ def naminatorize():
     if not text:
         return render_json('{}')
 
-    naminatorized = {}
+    naminatorized = []
     for name in text.split(" "):
-        naminatorized[name] = name + "ator"
+        naminatorized.append(name + "inator")
 
     return render_json(json.dumps(naminatorized))
 
