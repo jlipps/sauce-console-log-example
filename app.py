@@ -24,8 +24,11 @@ def naminatorize():
 
     naminatorized = []
     for name in text.split(" "):
-        naminatorized.append(name + "inator")
+        suffix = "nator"
+        if not name.endswith(('a', 'e', 'i', 'o', 'u')):
+            suffix = "i" + suffix
 
+        naminatorized.append(name + suffix)
     return render_json(json.dumps(naminatorized))
 
 
