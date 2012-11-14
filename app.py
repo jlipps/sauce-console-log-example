@@ -18,7 +18,7 @@ def render_json(content):
 
 @app.route("/naminatorize", methods=['GET', 'POST'])
 def naminatorize():
-    text = request.args.get('text')
+    text = request.form.get('text') or request.args.get('text')
     if not text:
         return render_json('{}')
 
