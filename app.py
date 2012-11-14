@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 # encoding: utf-8
+from __future__ import unicode_literals
 
 from flask import Flask, request, render_template
 from flask import json
 
 app = Flask(__name__)
-app.secret_key = '\t>\x15X\x17\xa7(\xe8\x0f/j\xfe\xb0\xee\xe5\x08\xec\xc8SEZ\x8c\xa2Y'
+app.secret_key = '\t>\x15X\x17\xa7(\xe8\x0f/j\xfe\xb0\xee\xe5\x08\xec\xc8SEZ\x8c\xa2Y'.encode('utf-8')
 
 
 def render_text(content):
