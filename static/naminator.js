@@ -7,7 +7,7 @@ $(function() {
 var doTheNaminating = function() {
     console.log("Doing the naminating");
     $.ajax({
-        url: 'localhost:5050/naminatorize'
+        url: '/naminatorize'
         , type: "POST"
         , data: {text: $('#names').val()}
         , success: function(res) {
@@ -15,7 +15,7 @@ var doTheNaminating = function() {
             $.each(res, function(name) {
                 var div = $('<div>' + name + '</div>');
                 $('#naminated').appendChild(div);
-            }
+            })
         }
     });
 }
