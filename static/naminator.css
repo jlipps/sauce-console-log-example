@@ -29,3 +29,7 @@ input#doItNau {
 .inator:last-child {
     border-bottom: 0px;
 }
+
+#mainImg {
+    margin: 10px 0px;
+}
