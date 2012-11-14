@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-from flask import Flask, render_template
+from flask import Flask, request, render_template
+from flask import json
 
 app = Flask(__name__)
 app.secret_key = '\t>\x15X\x17\xa7(\xe8\x0f/j\xfe\xb0\xee\xe5\x08\xec\xc8SEZ\x8c\xa2Y'
@@ -9,6 +10,23 @@ app.secret_key = '\t>\x15X\x17\xa7(\xe8\x0f/j\xfe\xb0\xee\xe5\x08\xec\xc8SEZ\x8c
 
 def render_text(content):
     return app.response_class(content, mimetype='text/plain')
+
+
+def render_json(content):
+    return app.response_class(content, mimetype='application/json')
+
+
+@app.route("/naminatorize")
+def naminatorize():
+    text = request.args.get('text')
+    if not text:
+        return render_json('{}')
+
+    naminatorized = {}
+    for name in text.split(" "):
+        naminatorized[name] = name + "ator"
+
+    return render_json(json.dumps(naminatorized))
 
 
 @app.route("/")
