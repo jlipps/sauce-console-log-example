@@ -1,3 +1,7 @@
+body {
+    font-family: Arial, Verdana, sans-serif;
+}
+
 #names {
     font-size: 30px;
 }
@@ -8,6 +12,20 @@ input#doItNau {
 }
 
 #naminated {
-    font-size: 30px;
+    font-size: 20px;
+    color: #999;
     margin-top: 20px;
+    padding: 10px;
+    background: #f0f0f0;
+    border: 1px solid #e0e0e0;
+    width: 500px;
+}
+
+.inator {
+    border-bottom: 1px dotted #ccc;
+    padding: 5px;
+}
+
+.inator:last-child {
+    border-bottom: 0px;
 }

@@ -12,8 +12,10 @@ var doTheNaminating = function() {
         , data: {text: $('#names').val()}
         , success: function(res) {
             $('#naminated').html('');
-            $.each(res, function(name) {
-                var div = $('<div>' + name + '</div>');
+            $('#naminated').css('font-size', '30px');
+            $('#naminated').css('color', '#111');
+            $.each(res, function(i, name) {
+                var div = $('<div class="inator">' + name + '</div>');
                 $('#naminated').append(div);
             })
         }
