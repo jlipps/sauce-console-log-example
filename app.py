@@ -25,7 +25,7 @@ def naminatorize():
     naminatorized = []
     for name in text.split(" "):
         suffix = "nator"
-        if not name.endswith(('a', 'e', 'i', 'o', 'u')):
+        if not name.endswith(('a', 'e', 'i', 'o', 'u', 'y')):
             suffix = "i" + suffix
 
         naminatorized.append(name + suffix)
