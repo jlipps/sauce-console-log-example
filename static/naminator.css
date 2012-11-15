@@ -31,5 +31,21 @@ input#doItNau {
 }
 
 #mainImg {
-    margin: 10px 0px;
+    width: 400px;
+}
+
+#mainLeft {
+    float: left;
+    width: 400px;
+    margin-right: 20px;
+}
+
+#mainRight {
+    float: left;
+    width: 500px;
+}
+
+#clearGuy {
+    clear: both;
+    width: 100%;
 }
