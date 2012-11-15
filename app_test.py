@@ -18,6 +18,8 @@ def setUp():
 class Selenium2OnSauce(unittest.TestCase):
 
     _basic_auth = None
+
+    # set by setUp
     user = None
     key = None
 
