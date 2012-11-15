@@ -1,10 +1,9 @@
 $(function() {
     console.log("Page loaded!");
-
-    $('#doItNau').click(doTheNaminating);
+    $('#doItNau').click(window.doTheNaminating);
 });
 
-var doTheNaminating = function() {
+window.doTheNaminating = function() {
     console.log("Doing the naminating");
     $.ajax({
         url: '/naminatorize'

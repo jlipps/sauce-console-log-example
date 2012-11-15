@@ -35,6 +35,28 @@ def naminatorize():
     return render_json(json.dumps(naminatorized))
 
 
+#@app.route("/naminatorize", methods=['GET', 'POST'])
+#def naminatorize():
+    #text = request.form.get('text') or request.args.get('text')
+    #if not text:
+        #return render_json('{}')
+
+    #naminatorized = []
+    #for name in text.split(" "):
+        #suffix = "nator"
+        #did_something_clever = False
+        #if name.endswith('e'):
+            #name = name[:-1] + 'i'
+            #did_something_clever = True
+        #if not name.endswith(('a', 'i', 'o', 'u', 'y')):
+            #suffix = 'i' + suffix
+        #else:
+            #did_something_clever = True
+
+        #naminatorized.append({(name + suffix): did_something_clever})
+    #return render_json(json.dumps({'result': naminatorized, 'version': '0.1'}))
+
+
 @app.route("/")
 def index():
     return render_template("index.html", **locals())
