@@ -5,6 +5,13 @@ import unittest
 from selenium import webdriver
 
 
+def setUp():
+    with open("auth.json") as fi:
+        auth = json.load(fi)
+        Selenium2OnSauce.user = auth['user']
+        Selenium2OnSauce.key = auth['key']
+
+
 class Selenium2OnSauce(unittest.TestCase):
 
     user = None
@@ -42,9 +49,5 @@ class Selenium2OnSauce(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    with open("auth.json") as fi:
-        auth = json.load(fi)
-        Selenium2OnSauce.user = auth['user']
-        Selenium2OnSauce.key = auth['key']
-
+    setUp()
     unittest.main()
