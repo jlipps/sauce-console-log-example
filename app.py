@@ -14,7 +14,7 @@ def render_text(content):
 
 
 def render_json(content):
-    return app.response_class(content, mimetype='application/json')
+    return app.response_class(content, mimetype='application/json; charset=utf-8')
 
 
 @app.route("/naminatorize", methods=['GET', 'POST'])
