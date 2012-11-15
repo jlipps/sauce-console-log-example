@@ -48,7 +48,7 @@ class Selenium2OnSauce(unittest.TestCase):
         url = "/rest/v1/{0.user}/jobs/{0.test_id}".format(self)
         headers = {'Authorization': self._basic_auth}
 
-        connection = httplib.HTTPConnection("saucelabs.com")
+        connection = httplib.HTTPSConnection("saucelabs.com")
         connection.request(method='PUT', url=url, body=body, headers=headers)
         return connection.getresponse().status == 200
 
