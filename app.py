@@ -19,32 +19,37 @@ def render_json(content):
 
 @app.route("/naminatorize", methods=['GET', 'POST'])
 def naminatorize():
-    text = request.form.get('text') or request.args.get('text')
-    if not text:
-        return render_json('{}')
-
     naminatorized = []
+
+    text = request.form.get('text') or request.args.get('text') or ""
     for name in text.split(" "):
+        if not name:
+            continue
+
         suffix = "nator"
+
         if name.endswith('e'):
             name = name[:-1] + 'i'
         if not name.endswith(('a', 'i', 'o', 'u', 'y')):
             suffix = 'i' + suffix
 
         naminatorized.append(name + suffix)
+
     return render_json(json.dumps(naminatorized))
 
 
 #@app.route("/naminatorize", methods=['GET', 'POST'])
 #def naminatorize():
-    #text = request.form.get('text') or request.args.get('text')
-    #if not text:
-        #return render_json('{}')
-
     #naminatorized = []
+
+    #text = request.form.get('text') or request.args.get('text') or ""
     #for name in text.split(" "):
+        #if not name:
+            #continue
+
         #suffix = "nator"
         #did_something_clever = False
+
         #if name.endswith('e'):
             #name = name[:-1] + 'i'
             #did_something_clever = True
@@ -54,6 +59,7 @@ def naminatorize():
             #did_something_clever = True
 
         #naminatorized.append({(name + suffix): did_something_clever})
+
     #return render_json(json.dumps({'result': naminatorized, 'version': '0.1'}))
 
 
