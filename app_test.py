@@ -37,9 +37,10 @@ class Selenium2OnSauce(unittest.TestCase):
         )
         self.driver.implicitly_wait(30)
         self.test_id = self.driver.session_id
-        print "Test page is https://saucelabs.com/jobs/%s" % self.test_id
+        print "Test is running at https://saucelabs.com/jobs/%s" % self.test_id
 
     def _send_passed(self):
+        """Tell Sauce Labs whether the test passed."""
         if not self._basic_auth:
             self._basic_auth = "Basic {}".format(
                 base64.encodestring("{0.user}:{0.key}".format(self))[:-1])
@@ -82,7 +83,7 @@ class Selenium2OnSauce(unittest.TestCase):
         self._passed = True
 
     def tearDown(self):
-        self._send_passed()
+        self._send_passed()  # mark the test pass/fail on sauce
         self.driver.quit()
 
 
