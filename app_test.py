@@ -1,6 +1,7 @@
 # encoding: utf-8
 import json
 import unittest
+import time
 
 from selenium import webdriver
 
@@ -39,6 +40,15 @@ class Selenium2OnSauce(unittest.TestCase):
         self.driver.find_element_by_id("doItNau").click()
 
         naminatorized = self.driver.find_element_by_tag_name("html").text
+        for _ in xrange(20):
+            if not "Naminatorized stuff" in naminatorized:
+                break
+
+            time.sleep(0.25)  # wait for tag to be filled out
+            naminatorized = self.driver.find_element_by_tag_name("html").text
+        else:
+            assert False, "-ators never showed up"
+
         self.assertIn("saucinator", naminatorized)
         self.assertIn("jquerynator", naminatorized)
         self.assertIn("seleniuminator", naminatorized)
