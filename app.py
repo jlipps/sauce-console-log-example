@@ -64,7 +64,7 @@ def naminatorize():
 
 @app.route("/")
 def index():
-    return render_template("index.html", **locals())
+    return render_template("index.html")
 
 
 def main():
