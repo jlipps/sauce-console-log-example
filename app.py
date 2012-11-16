@@ -17,8 +17,7 @@ def render_json(content):
     return app.response_class(content, mimetype='application/json; charset=utf-8')
 
 
-@app.route("/naminatorize", methods=['GET', 'POST'])
-def naminatorize():
+def _naminatorize_v1():
     naminatorized = []
 
     text = request.form.get('text') or request.args.get('text') or ""
@@ -27,40 +26,40 @@ def naminatorize():
             continue
 
         suffix = "nator"
-
         if name.endswith('e'):
             name = name[:-1] + 'i'
         if not name.endswith(('a', 'i', 'o', 'u', 'y')):
             suffix = 'i' + suffix
 
         naminatorized.append(name + suffix)
-
     return render_json(json.dumps(naminatorized))
 
 
-#@app.route("/naminatorize", methods=['GET', 'POST'])
-#def naminatorize():
-    #naminatorized = []
+def _naminatorize_v2():
+    naminatorized = []
 
-    #text = request.form.get('text') or request.args.get('text') or ""
-    #for name in text.split(" "):
-        #if not name:
-            #continue
+    text = request.form.get('text') or request.args.get('text') or ""
+    for name in text.split(" "):
+        if not name:
+            continue
 
-        #suffix = "nator"
-        #did_something_clever = False
+        suffix = "nator"
+        did_something_clever = False
+        if name.endswith('e'):
+            name = name[:-1] + 'i'
+            did_something_clever = True
+        if not name.endswith(('a', 'i', 'o', 'u', 'y')):
+            suffix = 'i' + suffix
+        else:
+            did_something_clever = True
 
-        #if name.endswith('e'):
-            #name = name[:-1] + 'i'
-            #did_something_clever = True
-        #if not name.endswith(('a', 'i', 'o', 'u', 'y')):
-            #suffix = 'i' + suffix
-        #else:
-            #did_something_clever = True
+        naminatorized.append({(name + suffix): did_something_clever})
+    return render_json(json.dumps({'result': naminatorized, 'version': '2.0'}))
 
-        #naminatorized.append({(name + suffix): did_something_clever})
 
-    #return render_json(json.dumps({'result': naminatorized, 'version': '0.1'}))
+@app.route("/naminatorize", methods=['GET', 'POST'])
+def naminatorize():
+    return _naminatorize_v2()
 
 
 @app.route("/")
